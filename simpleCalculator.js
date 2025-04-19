@@ -16,6 +16,7 @@ function calculator() {
 
   console.log(`Performing: ${num1} ${operation} ${num2}`);
   let result = 0;
+  let remainder = 0;
 
   switch (operation) {
     case "+":
@@ -28,13 +29,16 @@ function calculator() {
       result = num1 * num2;
       break;
     case "/":
-      result = num1 / num2;
+      remainder = num1 % num2;
+      result = (num1 - remainder) / num2;
       break;
     default:
       result = "Unsupported operation";
   }
 
-  console.log(`The result is: ${result}`);
+  if (remainder !== 0)
+    console.log(`The result is: ${result} with a remainder of ${remainder}`);
+  else console.log(`The result is: ${result}`);
 }
 
 calculator();
